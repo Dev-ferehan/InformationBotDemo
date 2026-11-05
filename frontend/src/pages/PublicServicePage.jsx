@@ -31,7 +31,7 @@ function PublicServicePage() {
           role: 'assistant',
           text: {
             en: 'Sorry, I could not get a response right now. Please try again in a little while.',
-            am: 'ይቅርታ፣ አሁን መልስ ማግኘት አልቻልኩም። እባክዎ ከጥቂት ጊዜ በኋላ ይሞክሩ።',
+            am: 'ይቅርታ አሁን መልስ ማግኘት አልቻልኩም። እባክዎ ከጥቂት ጊዜ በኋላ ይሞክሩ።',
           },
         },
       ])
