@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', 'Noto Sans Ethiopic', Nyala, sans-serif;
+  color: #141414;
+  background: #faf7ee;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --blue: #0000ff;
+  --blue-dark: #0000cc;
+  --ink: #171717;
+  --cream: #faf7ee;
+  --yellow: #ffe393;
+  --line: #ded8c9;
+  --bs-primary: #0000ff;
+  --bs-primary-rgb: 0, 0, 255;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--cream);
+  font-family: 'DM Sans', 'Noto Sans Ethiopic', Nyala, sans-serif;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--blue);
+  --bs-btn-border-color: var(--blue);
+  --bs-btn-hover-bg: var(--blue-dark);
+  --bs-btn-hover-border-color: var(--blue-dark);
+  --bs-btn-active-bg: var(--blue-dark);
+  --bs-btn-active-border-color: var(--blue-dark);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #ffbd24;
+  outline-offset: 3px;
+}
+
+::selection {
+  color: white;
+  background: var(--blue);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

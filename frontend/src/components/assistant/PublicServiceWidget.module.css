@@ -1,0 +1,178 @@
+
+
+.assistantWidget {
+  position: fixed;
+  right: 30px;
+  bottom: 27px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.widgetPanel {
+  display: block;
+  width: 390px;
+  height: min(650px, calc(100dvh - 100px));
+  min-height: min(430px, calc(100dvh - 100px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  scrollbar-color: #c8c0ae transparent;
+  scrollbar-width: thin;
+  border: 2px solid var(--ink);
+  border-radius: 22px;
+  background: var(--cream);
+  font-family: 'DM Sans', 'Noto Sans Ethiopic', sans-serif;
+  box-shadow: 4px 4px 0 var(--ink);
+  animation: widget-in 220ms ease both;
+}
+
+.widgetFooter {
+  display: grid;
+  min-height: 42px;
+  place-items: center;
+  border-top: 1px solid #e4ded1;
+  background: #fffdf7;
+  color: #625e54;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+  padding: 8px 12px;
+}
+
+.footerSpark {
+  color: var(--blue);
+}
+
+.widgetToggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--blue);
+  box-shadow: 4px 4px 0 var(--ink);
+  color: white;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.widgetToggle:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.widgetOpen .widgetToggle {
+  width: 43px;
+  height: 43px;
+  border-radius: 15px;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.widgetOpen .widgetToggle svg {
+  display: none;
+}
+
+.widgetOpen .widgetToggle::before {
+  position: absolute;
+  width: 19px;
+  height: 2.5px;
+  border-radius: 4px;
+  background: var(--ink);
+  content: '';
+}
+
+.widgetOpen .widgetToggle::after {
+  position: absolute;
+  width: 19px;
+  height: 2.5px;
+  border-radius: 4px;
+  background: var(--ink);
+  content: '';
+}
+
+.widgetOpen .widgetToggle::before {
+  transform: rotate(45deg);
+}
+
+.widgetOpen .widgetToggle::after {
+  transform: rotate(-45deg);
+}
+
+.togglePing {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: #25c17b;
+}
+
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: stretch;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  gap: 0;
+  background: var(--cream);
+}
+
+.fullscreen .widgetPanel {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  animation: none;
+}
+
+.fullscreen .widgetToggle {
+  display: none;
+}
+
+@media (max-width: 620px) {
+
+  .assistantWidget {
+    right: 17px;
+    bottom: 15px;
+    gap: 11px;
+  }
+
+  .widgetPanel {
+    width: min(390px, calc(100vw - 40px));
+    height: min(650px, calc(100dvh - 80px));
+    min-height: min(420px, calc(100dvh - 80px));
+    border-radius: 20px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .widgetToggle {
+    width: 53px;
+    height: 53px;
+  }
+
+  .fullscreen {
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@keyframes widget-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.scope {
+  display: contents;
+}

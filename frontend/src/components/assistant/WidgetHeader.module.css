@@ -1,0 +1,230 @@
+
+
+.widgetHeader {
+  padding: 14px 16px 0;
+  background: var(--blue);
+  color: white;
+}
+
+.widgetBrandRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.widgetBrandMark {
+  display: grid;
+  flex: 0 0 40px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--ink);
+  border-radius: 13px;
+  background: var(--yellow);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--blue);
+}
+
+.widgetBrandCopy {
+  display: flex;
+  min-width: 48px;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.widgetBrandCopy strong {
+  overflow: hidden;
+  font-family: 'Space Grotesk', 'Noto Sans Ethiopic', sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.languageToggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 5px 7px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--yellow);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.languageToggle:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.languageToggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.widgetBrandCopy span {
+  overflow: hidden;
+  color: #f0f1ff;
+  font-size: 11px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.widgetBrandCopy .widgetOnline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+  color: #f0f1ff;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.widgetOnline i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #64e7a5;
+  box-shadow: 0 0 0 2px rgba(100, 231, 165, 0.18);
+}
+
+.widgetClose {
+  display: grid;
+  flex: 0 0 40px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 1px solid rgba(255,255,255,0.44);
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.widgetAction {
+  display: grid;
+  flex: 0 0 40px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.65);
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.widgetAction:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+}
+
+.widgetClose:hover {
+  background: rgba(255,255,255,0.14);
+  transform: rotate(5deg);
+}
+
+.widgetTabbar {
+  display: flex;
+  gap: 4px;
+  width: max-content;
+  margin: 14px auto -1px;
+  padding: 4px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: #fffdf8;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.widgetTab {
+  min-width: 100px;
+  min-height: 40px;
+  padding: 7px 15px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #63616a;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 700;
+  transition: color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.widgetTab:hover {
+  transform: translateY(-1px);
+}
+
+.widgetTab.tabActive {
+  background: var(--blue);
+  color: white;
+}
+
+@media (max-width: 420px) {
+
+  .widgetHeader {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .widgetBrandRow {
+    gap: 6px;
+  }
+
+  .widgetBrandMark {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .widgetBrandCopy strong {
+    font-size: 12px;
+  }
+
+  .widgetBrandCopy span {
+    font-size: 11px;
+  }
+
+  .languageToggle {
+    gap: 3px;
+    min-height: 32px;
+    padding: 4px 5px;
+    font-size: 9px;
+  }
+
+  .languageToggle svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .widgetAction,
+  .widgetClose {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .widgetTab {
+    min-width: 112px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+.scope {
+  display: contents;
+}

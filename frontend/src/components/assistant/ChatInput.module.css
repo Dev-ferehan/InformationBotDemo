@@ -1,0 +1,177 @@
+
+
+.chatInputForm {
+  flex: 0 0 auto;
+  padding: 14px 18px 13px;
+  border-top: 1px solid #e5dfd1;
+  background: #fffdf7;
+}
+
+.chatInputShell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+  padding: 6px 7px 6px 15px;
+  border: 2px solid var(--ink);
+  border-radius: 15px;
+  background: white;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.chatInputShell input[type='text'] {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chatInputShell > input:not([type]) {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chatInputShell:focus-within {
+  outline: 3px solid #ffbd24;
+  outline-offset: 3px;
+}
+
+.chatInputShell input::placeholder {
+  color: #625e67;
+}
+
+.inputActions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2px;
+}
+
+.inputIconButton {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #706c78;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.sendButton {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #706c78;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.inputIconButton:hover {
+  background: #eeecff;
+  color: var(--blue);
+}
+
+.inputIconButton.listening {
+  background: #eeecff;
+  color: var(--blue);
+}
+
+.inputIconButton.listening {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.sendButton {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 11px;
+  background: var(--blue);
+  color: white;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.sendButton:hover:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.sendButton:disabled {
+  background: #d9d9f1;
+  color: #4a4b67;
+  cursor: default;
+}
+
+.inputHint {
+  display: block;
+  margin: 7px 3px 0;
+  color: #625e54;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 420px) {
+
+  .chatInputForm {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .inputActions {
+    gap: 0;
+  }
+
+  .inputIconButton {
+    width: 40px;
+    height: 44px;
+  }
+
+  .sendButton {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@keyframes pulse {
+  50% { box-shadow: 0 0 0 5px #e1e2ff; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.scope {
+  display: contents;
+}
+
+.spin {
+  animation: spin 850ms linear infinite;
+}
