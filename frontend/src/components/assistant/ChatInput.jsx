@@ -69,6 +69,7 @@ function ChatInput({ onSend, onUpload, isTyping, isListening, setIsListening }) 
         />
         <div className={`${styles.inputActions}`}>
           <input ref={fileInput} className={`${styles.visuallyHidden}`} type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={handleFile} />
+          
           <button className={`btn ${styles.inputIconButton}`} type="button" aria-label={isAmharic ? 'ሰነድ ያያይዙ' : 'Attach a document'} onClick={() => fileInput.current?.click()}><Paperclip size={17} /></button>
           <button className={`btn ${styles.inputIconButton} ${isListening ? styles.listening : ''}`} type="button" aria-label={isAmharic ? 'በድምፅ ይናገሩ' : 'Use voice input'} aria-pressed={isListening} onClick={toggleVoiceInput}><Mic size={20} /></button>
           <button className={`btn btn-primary ${styles.sendButton}`} type="submit" disabled={!value.trim() || isTyping} aria-label={isAmharic ? 'መልእክት ይላኩ' : 'Send message'}>

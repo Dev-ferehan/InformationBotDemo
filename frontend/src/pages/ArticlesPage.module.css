@@ -17,9 +17,9 @@
 .articleSearch {
   display: flex;
   align-items: center;
-  gap: 9px;
-  min-height: 50px;
-  padding: 4px 5px 4px 12px;
+  gap: 7px;
+  min-height: 40px;
+  padding: 2px 3px 2px 8px;
   border: 2px solid var(--ink);
   border-radius: 12px;
   background: white;
@@ -27,14 +27,14 @@
 }
 
 .articleSearch input {
-  width: 100%;
+  width: 80%;
   min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
   color: var(--ink);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .articleSearch input::placeholder {
@@ -43,28 +43,29 @@
 
 .articlesScreen {
   overflow: visible;
-  padding: 17px 17px 18px;
+  container-type: inline-size;
+  padding: clamp(14px, 2cqi, 26px);
   background: var(--cream);
 }
 
 .articlesIntro {
   display: flex;
   align-items: center;
-  gap: 11px;
-  margin-bottom: 15px;
+  gap: 9px;
+  margin-bottom: 13px;
 }
 
 .articlesMark {
   display: grid;
   flex: 0 0 40px;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: 2px solid var(--ink);
   border-radius: 12px;
   background: #e4e6ff;
   color: var(--blue);
-  box-shadow: 4px 4px 0 var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .articlesIntro p {
@@ -74,7 +75,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .articlesIntro h2 {
@@ -93,15 +94,10 @@
 
 .categoryFilters {
   display: flex;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 7px;
   margin: 13px 0 17px;
-  overflow-x: auto;
-  padding: 0 1px 3px;
-  scrollbar-width: none;
-}
-
-.categoryFilters::-webkit-scrollbar {
-  display: none;
+  padding: 0 2px 3px;
 }
 
 .categoryFilters button {
@@ -119,7 +115,7 @@
 }
 
 .categoryFilters button:hover {
-  border-color: var(--ink);
+  /* border-color: var(--ink); */
 }
 
 .categoryFilters button.categoryActive {
@@ -132,47 +128,48 @@
 .articleResultsLabel {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #767166;
   font-size: 11px;
-  line-height: 1.5;
+  line-height: 1;
   letter-spacing: 0;
 }
 
 .articleList {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 9px;
 }
 
 .articleCard {
   display: flex;
   align-items: flex-start;
-  gap: 11px;
+  gap: 6px;
   width: 100%;
-  padding: 12px 10px;
+  min-width: 0;
+  padding: 10px 9px;
   border: 2px solid var(--ink);
-  border-radius: 13px;
+  border-radius: 11px;
   background: #fffefa;
   box-shadow: 4px 4px 0 var(--ink);
   color: var(--ink);
   cursor: pointer;
   text-align: left;
   white-space: normal;
-  transition: transform 130ms ease, box-shadow 130ms ease;
+  /* transition: transform 130ms ease, box-shadow 130ms ease; */
 }
 
 .articleCard:hover {
-  transform: translate(2px, 2px);
-  box-shadow: none;
+  /* transform: translate(2px, 2px);
+  box-shadow: none; */
 }
 
 .articleIcon {
   display: grid;
   flex: 0 0 35px;
   place-items: center;
-  width: 35px;
-  height: 39px;
+  width: 30px;
+  height: 34px;
   border: 1px solid var(--ink);
   border-radius: 10px;
   background: #e7e8ff;
@@ -262,6 +259,7 @@
 }
 
 .emptyArticles {
+  grid-column: 1 / -1;
   padding: 20px 10px;
   border: 1.5px dashed #c9c2b4;
   border-radius: 12px;
@@ -390,7 +388,7 @@
 }
 
 .detailAsk:hover {
-  transform: translate(2px, 2px);
+  transform: translate(2px, 2px); 
   box-shadow: none;
 }
 
@@ -402,4 +400,19 @@
 }
 .scope {
   display: contents;
+}
+
+@container (min-width: 680px) {
+  
+  .articleList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .articleCard {
+    gap: 2;
+    width: 95%;
+    min-height: 70%;
+    padding: 5px 10px;
+  }
 }

@@ -118,10 +118,7 @@ function ArticlesPage({ onAskQuestion }) {
               <span className={styles.articlesMark}><BookOpen size={19} /></span>
               <div><p>{isAmharic ? 'ይፋዊ መረጃ' : 'OFFICIAL INFORMATION'}</p><h2>{isAmharic ? 'መመሪያዎችን ያስሱ' : 'Browse service guides'}</h2></div>
             </div>
-            {/* <label className={`${styles.articleSearch} input-group`}>
-              <Search size={17} />
-              <input className="form-control" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={isAmharic ? 'መመሪያዎችን ይፈልጉ...' : 'Search guides...'} aria-label={isAmharic ? 'መመሪያዎችን ይፈልጉ' : 'Search guides'} />
-            </label> */}
+          
             <div className={styles.categoryFilters} aria-label={isAmharic ? 'መመሪያዎችን ይመድቡ' : 'Filter guides by category'}>
               {localizedCategories.map((item) => <button type="button" key={item.id} className={`btn ${category === item.id ? `btn-primary ${styles.categoryActive}` : 'btn-outline-secondary'}`} onClick={() => setCategory(item.id)}>{item.label}</button>)}
             </div>

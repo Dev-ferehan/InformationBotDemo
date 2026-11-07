@@ -36,3 +36,5 @@ export async function uploadDocument(file) {
   await new Promise((resolve) => window.setTimeout(resolve, 350))
   return { name: file.name, size: file.size, type: file.type }
 }
+
+

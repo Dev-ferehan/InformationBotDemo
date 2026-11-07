@@ -20,48 +20,48 @@
 }
 
 .chatInputShell input[type='text'] {
-  flex: 1;
-  width: 100%;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
+  /* flex: 1; */
+  /* width: 100%; */
+  /* min-width: 0; */
+  border: none;
+  /* outline: 0; */
+  /* background: transparent; */
   font-size: 14px;
-  line-height: 1.5;
+  /* line-height: 1.5; */
 }
 
 .chatInputShell > input:not([type]) {
-  flex: 1;
-  width: 100%;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
+  /* flex: 1; */
+  /* width: 100%; */
+  /* min-width: 0; */
+  /* border: none; */
+  /* outline: 0; */
+  /* background: transparent; */
   font-size: 14px;
-  line-height: 1.5;
+  /* line-height: 1.5; */
 }
 
 .chatInputShell:focus-within {
-  outline: 3px solid #ffbd24;
-  outline-offset: 3px;
+  /* outline: 3px solid #ffbd24;
+  outline-offset: 3px; */
 }
 
 .chatInputShell input::placeholder {
-  color: #625e67;
+  /* color: #625e67; */
 }
 
 .inputActions {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
 }
 
 .inputIconButton {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   border: 0;
   border-radius: 9px;
@@ -74,8 +74,8 @@
 .sendButton {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   border: 0;
   border-radius: 9px;
@@ -100,8 +100,8 @@
 }
 
 .sendButton {
-  width: 44px;
-  height: 44px;
+  width: 35px;
+  height: 35px;
   border: 2px solid var(--ink);
   border-radius: 11px;
   background: var(--blue);

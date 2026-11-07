@@ -21,7 +21,7 @@
 .faqHeading {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 7px;
   margin-bottom: 9px;
   color: #777266;
   font-family: 'Space Grotesk', 'Noto Sans Ethiopic', sans-serif;
@@ -40,16 +40,16 @@
 .faqGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 5px;
 }
 
 .faqCard {
   position: relative;
   display: flex;
-  min-height: 100px;
+  min-height: 70px;
   flex-direction: column;
   align-items: flex-start;
-  padding: 12px 30px 12px 13px;
+  padding: 8px 24px 8px 9px;
   border: 2px solid var(--ink);
   border-radius: 11px;
   background: #fff0bd;
@@ -66,13 +66,13 @@
 .faqCardTop {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 5px;
+  gap: 5px;
+  margin-bottom: 3px;
 }
 
 .faqIndex {
   color: #79715e;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .faqCategory {
@@ -84,13 +84,13 @@
 .faqQuestion {
   font-size: 14px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .faqArrow {
   position: absolute;
-  right: 8px;
-  bottom: 8px;
+  right: 5%;
+  bottom: 5px;
   color: var(--blue);
 }
 
@@ -101,7 +101,7 @@
   }
 
   .faqCard {
-    min-height: 76px;
+    min-height: 50px;
   }
 }
 .scope {
