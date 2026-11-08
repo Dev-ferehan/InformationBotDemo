@@ -11,6 +11,18 @@ async function getGovernmentalService(languageCode) {
     console.log(error);
   }
 }
+async function fetchArticle(languageCode){
+  try {
+    const response = await apiClient.get(`/api/articles`, {
+      params: { languageCode },
+    });
+
+    return response?.data?.data || response?.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export const governmentalService = {
   getGovernmentalService,
+  fetchArticle
 };

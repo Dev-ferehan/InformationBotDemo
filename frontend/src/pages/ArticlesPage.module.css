@@ -177,16 +177,37 @@
 }
 
 .articleIconTrade {
+  display: grid;
+  flex: 0 0 35px;
+  place-items: center;
+  width: 30px;
+  height: 34px;
+  border: 1px solid var(--ink);
+  border-radius: 10px;
   background: #fff0bd;
   color: #977000;
 }
 
 .articleIconLand {
+  display: grid;
+  flex: 0 0 35px;
+  place-items: center;
+  width: 30px;
+  height: 34px;
+  border: 1px solid var(--ink);
+  border-radius: 10px;
   background: #dcefdc;
   color: #32814b;
 }
 
 .articleIconTax {
+  display: grid;
+  flex: 0 0 35px;
+  place-items: center;
+  width: 30px;
+  height: 34px;
+  border: 1px solid var(--ink);
+  border-radius: 10px;
   background: #f9dfdc;
   color: #ba493f;
 }

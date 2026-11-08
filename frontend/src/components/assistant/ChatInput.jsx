@@ -10,6 +10,8 @@ function ChatInput({ onSend, onUpload, isTyping, isListening, setIsListening }) 
   const [voiceError, setVoiceError] = useState(false)
   const fileInput = useRef(null)
   const recognition = useRef(null)
+
+  
   const submit = (event) => {
     event.preventDefault()
     if (!value.trim() || isTyping) return

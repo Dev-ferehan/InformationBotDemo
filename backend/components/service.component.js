@@ -7,4 +7,5 @@ export const getGovernmentServicesComponent = async (req, res, next) => {
     message: "governmental service get successfully",
     data: result,
   });
+  
 };

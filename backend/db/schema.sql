@@ -16,3 +16,21 @@ CREATE TABLE service_translations (
     FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE CASCADE,
     UNIQUE (service_id, language_code)  
 );
+
+CREATE TABLE articles (
+    id VARCHAR(50) PRIMARY KEY,        
+    service_id VARCHAR(50) NOT NULL,    
+    minutes INT NOT NULL,             
+    FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE CASCADE
+);
+
+CREATE TABLE article_translations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id VARCHAR(50) NOT NULL,
+    language_code VARCHAR(10) NOT NULL,
+    summary TEXT NOT NULL,              
+    steps JSON NOT NULL,              
+    
+    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
+    UNIQUE (article_id, language_code)
+);
