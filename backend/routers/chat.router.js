@@ -1,4 +1,6 @@
 import express from 'express'
-import { chatComponent } from '../components/chat.component.js';
+import { chatComponent ,chatWithFileController} from '../components/chat.component.js';
+import {handleDocumentUpload } from '../middleware/upload.js'
 export const chatRouter = express.Router();
 chatRouter.post('/',chatComponent)
+chatRouter.post('/with-file',handleDocumentUpload,chatWithFileController )

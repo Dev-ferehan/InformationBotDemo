@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { LoaderCircle, Mic, Paperclip, SendHorizontal } from 'lucide-react'
+import { Image, LoaderCircle, Mic, Paperclip, SendHorizontal, X } from 'lucide-react'
 import styles from './ChatInput.module.css'
 import { useLanguage } from '../../context/useLanguage.js'
 
@@ -8,7 +8,9 @@ function ChatInput({ onSend, onUpload, isTyping, isListening, setIsListening }) 
   const isAmharic = language === 'am'
   const [value, setValue] = useState('')
   const [voiceError, setVoiceError] = useState(false)
-  const fileInput = useRef(null)
+  const [selectedFile, setSelectedFile] = useState(null)
+  const documentInput = useRef(null)
+  const imageInput = useRef(null)
   const recognition = useRef(null)
 
   
@@ -16,13 +18,17 @@ function ChatInput({ onSend, onUpload, isTyping, isListening, setIsListening }) 
     event.preventDefault()
     if (!value.trim() || isTyping) return
     onSend(value)
+onUpload(selectedFile)
     setValue('')
     
   }
 
   const handleFile = (event) => {
     const file = event.target.files?.[0]
-    if (file) onUpload(file)
+    if (file) {
+      setSelectedFile(file)
+      onUpload(file)
+    }
     event.target.value = ''
   }
 
@@ -70,20 +76,52 @@ function ChatInput({ onSend, onUpload, isTyping, isListening, setIsListening }) 
           placeholder={isAmharic ? 'ጥያቄዎን እዚህ ይጻፉ...' : 'Type your question here...'}
         />
         <div className={`${styles.inputActions}`}>
-          <input ref={fileInput} className={`${styles.visuallyHidden}`} type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={handleFile} />
-          
-          <button className={`btn ${styles.inputIconButton}`} type="button" aria-label={isAmharic ? 'ሰነድ ያያይዙ' : 'Attach a document'} onClick={() => fileInput.current?.click()}><Paperclip size={17} /></button>
+          <input
+            ref={documentInput}
+            className={styles.visuallyHidden}
+            type="file"
+            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*"
+            onChange={handleFile}
+          />
+     
+          <button
+            className={`btn ${styles.inputIconButton}`}
+            type="button"
+            aria-label={isAmharic ? 'ሰነድ ያያይዙ' : 'Attach a PDF or image'}
+            title={isAmharic ? 'ሰነድ ያያይዙ' : 'Attach a PDF or image'}
+            onClick={() => documentInput.current?.click()}
+          ><Paperclip size={17} /></button>
+          {/* <button
+            className={`btn ${styles.inputIconButton}`}
+            type="button"
+            aria-label={isAmharic ? 'ምስል ያያይዙ' : 'Attach an image'}
+            title={isAmharic ? 'ምስል ያያይዙ' : 'Attach an image'}
+            onClick={() => imageInput.current?.click()}
+          ><Image size={17} /></button> */}
           <button className={`btn ${styles.inputIconButton} ${isListening ? styles.listening : ''}`} type="button" aria-label={isAmharic ? 'በድምፅ ይናገሩ' : 'Use voice input'} aria-pressed={isListening} onClick={toggleVoiceInput}><Mic size={20} /></button>
           <button className={`btn btn-primary ${styles.sendButton}`} type="submit" disabled={!value.trim() || isTyping} aria-label={isAmharic ? 'መልእክት ይላኩ' : 'Send message'}>
             {isTyping ? <LoaderCircle className={`${styles.spin}`} size={18} /> : <SendHorizontal size={18} />}
           </button>
         </div>
       </div>
+      {selectedFile && (
+        <div className={styles.attachmentChip}>
+          <span className={styles.attachmentName} title={selectedFile.name}>
+            {selectedFile.name}
+          </span>
+          <button
+            className={styles.removeAttachment}
+            type="button"
+            aria-label={isAmharic ? 'የተያያዘውን ፋይል አስወግድ' : 'Remove attached file'}
+            onClick={() => setSelectedFile(null)}
+          ><X size={14} /></button>
+        </div>
+      )}
       <span className={`${styles.inputHint}`}>{voiceError
         ? (isAmharic ? 'የድምፅ ግቤት በዚህ አሳሽ አይደገፍም' : 'Voice input is not supported in this browser')
         : isListening
           ? (isAmharic ? 'ድምፅዎን በመጠበቅ ላይ' : 'Listening...')
-          : (isAmharic ? 'የፒዲኤፍ ወይም የዎርድ ሰነድ ማያያዝ ይችላሉ' : 'Attach a PDF or Word document')}</span>
+          : (isAmharic ? 'ለመመሪያ PDF፣ Word ሰነድ ወይም ምስል ያያይዙ።' : 'Attach a PDF, Word document, or image for guidance.')}</span>
     </form>
     </div>
   )

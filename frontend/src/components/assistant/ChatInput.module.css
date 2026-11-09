@@ -20,34 +20,34 @@
 }
 
 .chatInputShell input[type='text'] {
-  /* flex: 1; */
-  /* width: 100%; */
-  /* min-width: 0; */
+  flex: 1;
+  width: 100%;
+  min-width: 0;
   border: none;
-  /* outline: 0; */
-  /* background: transparent; */
+  outline: 0;
+  background: transparent;
   font-size: 14px;
-  /* line-height: 1.5; */
+  line-height: 1.5;
 }
 
 .chatInputShell > input:not([type]) {
-  /* flex: 1; */
-  /* width: 100%; */
-  /* min-width: 0; */
-  /* border: none; */
-  /* outline: 0; */
-  /* background: transparent; */
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: 0;
+  background: transparent;
   font-size: 14px;
-  /* line-height: 1.5; */
+  line-height: 1.5;
 }
 
 .chatInputShell:focus-within {
-  /* outline: 3px solid #ffbd24;
-  outline-offset: 3px; */
+  outline: 2px solid #ffbd24;
+  outline-offset: 2px;
 }
 
 .chatInputShell input::placeholder {
-  /* color: #625e67; */
+  color: #77736a;
 }
 
 .inputActions {
@@ -126,6 +126,46 @@
   color: #625e54;
   font-size: 12px;
   line-height: 1.5;
+}
+
+.attachmentChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+  margin: 9px 3px 0;
+  padding: 4px 7px 4px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 9px;
+  background: #e8eaff;
+  box-shadow: 2px 2px 0 var(--ink);
+  color: #373657;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.attachmentName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.removeAttachment {
+  display: grid;
+  flex: 0 0 22px;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.removeAttachment:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .visuallyHidden {

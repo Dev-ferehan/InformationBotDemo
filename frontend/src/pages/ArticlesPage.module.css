@@ -42,7 +42,10 @@
 }
 
 .articlesScreen {
-  overflow: visible;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   container-type: inline-size;
   padding: clamp(14px, 2cqi, 26px);
   background: var(--cream);

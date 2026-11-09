@@ -6,6 +6,7 @@ import express from 'express'
 import { mainRouter } from './routers/main.router.js'
 const app=express()
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use(cors())
 app.use('/api',mainRouter)
 const port = process.env.PORT

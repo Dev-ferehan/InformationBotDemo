@@ -1,8 +1,11 @@
 import {
+  BriefcaseBusiness,
+  FileText,
   Languages,
   ArrowDown,
   ArrowUpRight,
   Landmark,
+  MapPin,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -12,15 +15,50 @@ import { useLanguage } from "../context/useLanguage.js";
 import { governmentalService } from "../services/service.service.js";
 
 function HomePage({ onOpenGuidelines, onAskQuestion }) {
-  const [services, useServices] = useState([]);
+  const [services, setServices] = useState([]);
   const { language, toggleLanguage } = useLanguage();
   const isAmharic = language === "am";
+  const fallbackServices = [
+    {
+      icon: <FileText size={21} />,
+      category: isAmharic ? "ፓስፖርት" : "PASSPORTS",
+      title: isAmharic ? "የፓስፖርት አገልግሎቶች" : "Passport services",
+      description: isAmharic
+        ? "ማመልከቻ፣ እድሳት እና መስፈርቶች"
+        : "Applications, renewals, and requirements",
+      prompt: "How do I apply for a passport?",
+      color: "blue",
+    },
+    {
+      icon: <BriefcaseBusiness size={21} />,
+      category: isAmharic ? "ንግድ" : "BUSINESS",
+      title: isAmharic ? "ንግድ እና ፈቃድ" : "Business and licensing",
+      description: isAmharic
+        ? "ፈቃዶች፣ ምዝገባ እና ማረጋገጫ"
+        : "Licenses, registration, and verification",
+      prompt: "How do I renew a business license?",
+      color: "yellow",
+    },
+    {
+      icon: <MapPin size={21} />,
+      category: isAmharic ? "መሬት" : "LAND",
+      title: isAmharic ? "የመሬት ምዝገባ" : "Land registration",
+      description: isAmharic
+        ? "ባለቤትነት፣ መዝገቦች እና ሂደቶች"
+        : "Ownership, records, and procedures",
+      prompt: "How do I register land?",
+      color: "green",
+    },
+  ];
+  const serviceCards = services.length ? services : fallbackServices;
+
   useEffect(() => {
     const fetchServiceData = async () => {
+      setServices([]);
       try {
         const result =
           await governmentalService.getGovernmentalService(language);
-        useServices(result);
+        if (Array.isArray(result)) setServices(result);
       } catch (error) {
         console.error("error happen:", error);
       }
@@ -180,7 +218,7 @@ function HomePage({ onOpenGuidelines, onAskQuestion }) {
 
           {/* cards  */}
           <div className={`${styles.serviceGrid} row g-3`}>
-            {services?.map((service, index) => {
+            {serviceCards.map((service, index) => {
               return (
                 <div className="col-12 col-sm-6 col-xl-3" key={service.color}>
                   <button

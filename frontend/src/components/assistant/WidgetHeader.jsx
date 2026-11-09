@@ -1,9 +1,9 @@
-import { Languages, Landmark, Maximize2, Minimize2, X } from 'lucide-react'
+import { BookOpen, Landmark, Maximize2, Minimize2, X } from 'lucide-react'
 import styles from './WidgetHeader.module.css'
 import { useLanguage } from '../../context/useLanguage.js'
 
-function WidgetHeader({ activeTab, setActiveTab, onClose, isFullscreen, onToggleFullscreen }) {
-  const { language, toggleLanguage } = useLanguage()
+function WidgetHeader({ activeTab, setActiveTab, serviceMode, setServiceMode, onClose, isFullscreen, onToggleFullscreen }) {
+  const { language } = useLanguage()
   const isAmharic = language === 'am'
 
   return (
@@ -26,21 +26,31 @@ function WidgetHeader({ activeTab, setActiveTab, onClose, isFullscreen, onToggle
         </button>
         <button className={`${styles.widgetClose}`} type="button" aria-label={isAmharic ? 'ረዳቱን ዝጋ' : 'Close assistant'} onClick={onClose}><X size={20} /></button>
       </div>
-      <div className={`nav nav-pills ${styles.widgetTabbar}`} role="tablist" aria-label={isAmharic ? 'የረዳቱ ክፍሎች' : 'Assistant sections'}>
+      <div className={styles.widgetTabRow}>
+        <div className={`nav nav-pills `} role="tablist" aria-label={isAmharic ? 'የአገልግሎት አይነት' : 'Service category'}>
         <button
           type="button"
-          className={`nav-link ${styles.widgetTab} ${activeTab === 'chat' ? `${styles.tabActive} active` : ''}`}
+          className={`${styles.guidesButton} ${activeTab === 'chat' && serviceMode === 'services' ? `${styles.tabActive} active` : ''}`}
           role="tab"
-          aria-selected={activeTab === 'chat'}
-          onClick={() => setActiveTab('chat')}
-        >{isAmharic ? 'ውይይት' : 'Chat'}</button>
+          aria-selected={activeTab === 'chat' && serviceMode === 'services'}
+          onClick={() => { setServiceMode('services'); setActiveTab('chat') }}
+        >{isAmharic ? 'የመንግሥት አገልግሎቶች' : 'Government Services'}</button>
         <button
           type="button"
-          className={`nav-link ${styles.widgetTab} ${activeTab === 'articles' ? `${styles.tabActive} active` : ''}`}
+          className={`${styles.guidesButton} ${activeTab === 'chat' && serviceMode === 'legal' ? `${styles.tabActive} active` : ''}`}
           role="tab"
-          aria-selected={activeTab === 'articles'}
+          aria-selected={activeTab === 'chat' && serviceMode === 'legal'}
+          onClick={() => { setServiceMode('legal'); setActiveTab('chat') }}
+        >{isAmharic ? 'የሕግ ምክክር ' : 'Legal Consultation '}
+        </button>
+        <button
+          className={styles.guidesButton}
+          type="button"
+          aria-label={isAmharic ? 'መመሪያዎች' : 'Guides'}
           onClick={() => setActiveTab('articles')}
-        >{isAmharic ? 'መመሪያዎች' : 'Guides'}</button>
+        ><BookOpen size={16} /><span>{isAmharic ? 'መመሪያዎች' : 'Guides'}</span></button>
+        </div>
+    
       </div>
     </header>
     </div>

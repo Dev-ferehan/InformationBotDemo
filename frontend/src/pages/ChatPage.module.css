@@ -1,11 +1,20 @@
 
 
 .chatScreen {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
   background: var(--cream);
 }
 
 .chatScrollArea {
-  overflow: visible;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: #c8c0ae transparent;
+  scrollbar-width: thin;
 }
 
 .chatWelcome {

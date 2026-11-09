@@ -141,27 +141,36 @@
 
 .widgetTabbar {
   display: flex;
-  gap: 4px;
-  width: max-content;
-  margin: 14px auto -1px;
+  flex: 1 1 auto;
+  gap: 3px;
+  width: min(100%, 430px);
+  min-width: 0;
+  margin: 12px 0 -1px;
   padding: 4px;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
+  border: 2px solid var(--ink);
+  border-radius: 13px;
   background: #fffdf8;
   box-shadow: 2px 2px 0 var(--ink);
 }
 
+.widgetTabRow {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
 .widgetTab {
-  min-width: 100px;
-  min-height: 40px;
-  padding: 7px 15px;
+  flex: 1 1 50%;
+  min-width: 0;
+  min-height: 38px;
+  padding: 6px 8px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 9px;
   background: transparent;
   color: #63616a;
   cursor: pointer;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 10px;
+  line-height: 1.25;
   font-weight: 700;
   transition: color 140ms ease, background 140ms ease, transform 140ms ease;
 }
@@ -173,6 +182,30 @@
 .widgetTab.tabActive {
   background: var(--blue);
   color: white;
+}
+
+.guidesButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  align-self: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 5px 8px;
+  margin: 10px 3px;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--yellow);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.guidesButton:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 @media (max-width: 420px) {
@@ -219,10 +252,23 @@
     height: 34px;
   }
 
+  .widgetTabRow {
+    gap: 5px;
+  }
+
   .widgetTab {
-    min-width: 112px;
-    padding-right: 14px;
-    padding-left: 14px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 9px;
+  }
+
+  .guidesButton {
+    gap: 0;
+    padding: 5px;
+  }
+
+  .guidesButton span {
+    display: none;
   }
 }
 .scope {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
 import WidgetHeader from './WidgetHeader.jsx'
 import ChatPage from '../../pages/ChatPage.jsx'
@@ -11,6 +11,8 @@ function PublicServiceWidget({
   setIsOpen,
   activeTab,
   setActiveTab,
+  serviceMode,
+  setServiceMode,
   messages,
   onSend,
   onUpload,
@@ -21,33 +23,6 @@ function PublicServiceWidget({
   const { language } = useLanguage()
   const isAmharic = language === 'am'
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const widgetPanelRef = useRef(null)
-  const previousChatState = useRef({ messageCount: messages.length, isTyping })
-  const previousTab = useRef(activeTab)
-
-  useEffect(() => {
-    const tabChanged = previousTab.current !== activeTab
-    previousTab.current = activeTab
-    const chatStateChanged =
-      previousChatState.current.messageCount !== messages.length ||
-      previousChatState.current.isTyping !== isTyping
-    previousChatState.current = { messageCount: messages.length, isTyping }
-
-    if (!isOpen || !widgetPanelRef.current) return
-
-    if (tabChanged && activeTab === 'articles') {
-      widgetPanelRef.current.scrollTo({ top: 0, behavior: 'smooth' })
-      return
-    }
-
-    if ((chatStateChanged || tabChanged) && activeTab === 'chat') {
-      widgetPanelRef.current.scrollTo({
-        top: widgetPanelRef.current.scrollHeight,
-        behavior: 'smooth',
-      })
-    }
-  }, [activeTab, isOpen, isTyping, messages.length])
-
   useEffect(() => {
     if (!isFullscreen) return undefined
 
@@ -69,10 +44,12 @@ function PublicServiceWidget({
         aria-modal={isFullscreen && isOpen ? 'true' : undefined}
       >
         {isOpen && (
-          <div ref={widgetPanelRef} className={`card ${styles.widgetPanel}`}>
+          <div className={`card ${styles.widgetPanel}`}>
             <WidgetHeader
               activeTab={activeTab}
               setActiveTab={setActiveTab}
+              serviceMode={serviceMode}
+              setServiceMode={setServiceMode}
               onClose={() => {
                 setIsFullscreen(false)
                 setIsOpen(false)
@@ -83,6 +60,7 @@ function PublicServiceWidget({
             {activeTab === 'chat' ? (
               <ChatPage
                 messages={messages}
+                serviceMode={serviceMode}
                 onSend={onSend}
                 onUpload={onUpload}
                 isTyping={isTyping}
@@ -94,7 +72,14 @@ function PublicServiceWidget({
                 onAskQuestion={(question) => { setActiveTab('chat'); onSend(question) }}
               />
             )}
-            <div className={`${styles.widgetFooter}`}><span><span className={`${styles.footerSpark}`}>✳</span> {isAmharic ? 'ለሁሉም ቀላል የመንግሥት አገልግሎት መመሪያ' : 'Clear guidance for government services'}</span></div>
+            <div className={styles.widgetFooter} role="note">
+              <strong>{isAmharic ? "አስፈላጊ ማስታወሻ" : "Important notice"}</strong>
+              <span>
+                {isAmharic
+                  ? "AI አጠቃላይ መመሪያና መረጃ ይሰጣል፤ መደበኛ የሕግ ወይም የመንግሥት ውሳኔ አይደለም።"
+                  : "AI provides guidance and information, not formal legal advice or government decisions."}
+              </span>
+            </div>
           </div>
         )}
         <button
