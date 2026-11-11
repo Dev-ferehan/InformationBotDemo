@@ -34,3 +34,11 @@ CREATE TABLE article_translations (
     FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
     UNIQUE (article_id, language_code)
 );
+
+CREATE TABLE `constitution_chunks` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY, 
+  `chunk_text` TEXT NOT NULL,                  
+  `embedding` JSON NOT NULL,                    
+  `language` VARCHAR(10) DEFAULT 'en',         
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
